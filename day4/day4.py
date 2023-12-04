@@ -13,13 +13,6 @@ def get_matches(line):
 
   return len(common_nums)
 
-def get_score(line):
-  matches = get_matches(line)
-
-  if matches > 0:
-    return 2 ** (matches - 1)
-  return 0
-
 def part1():
   total = 0
   for line in lines:
