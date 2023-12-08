@@ -3,7 +3,7 @@ import pathlib
 
 lines = pathlib.Path("data.txt").read_text().split("\n")
 
-def day1():
+def part1():
   times_str = lines[0].replace("Time:", "")
   times = [int(s) for s in times_str.split()]
 
@@ -23,7 +23,7 @@ def day1():
   
   print(total)
 
-def day2():
+def part2():
   times_str = lines[0].replace("Time:", "").replace(" ", "")
   time = int(times_str)
 
@@ -39,5 +39,4 @@ def day2():
   
   print(record_times)
 
-
-day2()
+part2()
