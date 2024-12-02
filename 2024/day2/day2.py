@@ -8,13 +8,7 @@ def is_safe(report):
   diffs = [curr - prev for prev, curr in zip(report, report[1:])]
   diffs_abs = [abs(d) for d in diffs]
   same_sign = all(d >= 0 for d in diffs) or all(d < 0 for d in diffs)
-  if not same_sign:
-    return False
-  if min(diffs_abs) < 1:
-    return False
-  if max(diffs_abs) > 3:
-    return False
-  return True
+  return same_sign and min(diffs_abs) >= 1 and max(diffs_abs) <= 3
 
 safe = sum((is_safe(report) for report in reports))
 
