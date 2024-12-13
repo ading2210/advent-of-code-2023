@@ -24,9 +24,17 @@ def setup_dir(year, day):
   response.raise_for_status()
   data = response.text.strip()
 
-  (puzzle_dir / "data.txt").write_text(data)
-  (puzzle_dir / "data_test.txt").write_text("")
-  shutil.copy(base_dir / "template.py", puzzle_dir / f"day{day}.py")
+  data_path = puzzle_dir / "data.txt"
+  data_test_path = puzzle_dir / "data_test.txt"
+  program_path = puzzle_dir / f"day{day}.py"
+  template_path = base_dir / "template.py"
+
+  if not data_path.exists():
+    data_path.write_text(data)
+  if not data_test_path.exists():
+    data_test_path.write_text("")
+  if not program_path.exists():
+    shutil.copy(template_path, program_path)
 
 if __name__ == "__main__":
   parser = argparse.ArgumentParser(
